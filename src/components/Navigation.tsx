@@ -32,7 +32,7 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-6 py-3 md:py-4 flex items-center justify-between">
         <NavLink to="/" onClick={handleHome} className="font-mono text-base md:text-lg font-semibold">
-          hanumant<span className="text-muted-foreground">()</span>
+          Keshav<span className="text-muted-foreground">();</span>
         </NavLink>
         
         <div className="hidden md:flex items-center gap-8">

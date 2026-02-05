@@ -1,4 +1,4 @@
-import resume from "../assets/Hanumant_Resume.pdf";
+import resume from "../assets/resume.pdf";
 import Marquee from "./Marquee";
 
  
