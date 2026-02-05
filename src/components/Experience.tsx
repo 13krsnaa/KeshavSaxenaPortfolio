@@ -7,9 +7,9 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    company: "George Washington University",
-    role: "Frontend Developer",
-    period: "March 2025 - Present",
+    company: "Dr. APJ Abdul Kalam Technical University",
+    role: "Computer Science Engineer",
+    period: "August 2023 - Present",
     description: [
       "Designed and deployed full-stack applications on AWS EC2 with AWS RDS for reliable database management and 99.999% uptime.",
       "Containerized applications using Docker, enabling 40% faster deployment cycles.",
