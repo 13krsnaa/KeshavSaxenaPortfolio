@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# 🚀 Keshav Saxena – Premium Portfolio
+**Keshav Saxena** is a production-grade, immersive digital experience showcasing full-stack engineering excellence. This portfolio features a cinematic dark aesthetic, fluid micro-animations, and a highly responsive architecture built with Next.js 15.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ **Features**
+- **Cinematic Dark Theme**: Deep black aesthetics with Slate Blue glows and glassmorphism.
+- **Fluid Micro-Animations**: Smooth interactions and hover effects powered by Framer Motion.
+- **GitHub Activity Tracking**: Real-time visualization of coding contributions and metrics.
+- **Responsive Engineering**: Pixel-perfect layout optimized for mobile, tablet, and desktop.
+- **High Performance**: Blazing-fast load times and SEO optimization via Next.js 15 App Router.
 
-Currently, two official plugins are available:
+🏗 **High-Level Architecture**
+The portfolio is built as a modern React application utilizing the latest Next.js features for optimal performance and developer experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠 **Technology Stack**
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React 19, Next.js 16 (App Router), Framer Motion, Lucide React |
+| **Styling** | Tailwind CSS 4, Glassmorphism, CSS Variables |
+| **Utilities** | clsx, tailwind-merge |
+| **Deployment** | Vercel |
+| **Language** | TypeScript |
 
-## React Compiler
+🚀 **Quick Start**
+The fastest way to run this portfolio locally:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/13krsnaa/KeshavSaxenaPortfolio.git
+   cd KeshavSaxenaPortfolio
+   ```
 
-## Expanding the ESLint configuration
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
+   Access the app at [http://localhost:3000](http://localhost:3000).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+📁 **Project Structure**
+```text
+├── public/          # Static assets (icons, images)
+├── src/
+│   ├── app/         # Next.js App Router (Layouts & Pages)
+│   ├── components/  # UI Components (Hero, Sections, Cards)
+│   └── lib/         # Utility functions & helpers
+├── tailwind.config.js
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🔗 **Connect with Me**
+[🌐 Live Demo](https://devkeshavsaxena.vercel.app) • [📧 Email](mailto:saxenakrishna9140@gmail.com) • [GitHub](https://github.com/13krsnaa) • [LinkedIn](https://linkedin.com/in/13krsna) • [Twitter](https://x.com/13krsnaa)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
+Distributed under the MIT License. Developed by **Keshav Saxena**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
