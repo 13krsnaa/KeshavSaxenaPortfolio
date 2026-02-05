@@ -1,4 +1,4 @@
-import resume from "../assets/resume.pdf";
+import resume from "../assets/Hanumant_Resume.pdf";
 import Marquee from "./Marquee";
 
  
@@ -61,6 +61,7 @@ const About = () => {
                   <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap">Programming Languages</div>
                   <Marquee
                     items={[
+                      "Python",
                       "JavaScript (ES6+)",
                       "TypeScript",
                       "MySQL",
@@ -81,7 +82,7 @@ const About = () => {
                       "Next.js",
                       "Node.js",
                       "Express.js",
-                      "RestAPI",
+                      "FastAPI",
                       "Redux",
                       "Tailwind CSS",
                     ]}
@@ -89,7 +90,18 @@ const About = () => {
                   />
                 </div>
   
-        
+                <div>
+                  <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap">DevOps / CI-CD Tools</div>
+                  <Marquee
+                    items={[
+                      "Jenkins",
+                      "GitHub Actions",
+                      "Docker",
+                      "AWS (EC2, S3, Lambda, RDS, IAM)",
+                    ]}
+                    initialDuplicates={2}
+                  />
+                </div>
 
                 <div>
                   <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap">Software & Tools</div>
@@ -99,9 +111,6 @@ const About = () => {
                       "Cursor",
                       "Git",
                       "Google Colab",
-                      "Docker",
-                      "Vercel",
-                       "AWS (EC2, S3, Lambda, RDS, IAM)",
                     ]}
                     initialDuplicates={2}
                   />
@@ -115,7 +124,7 @@ const About = () => {
                       "Generative AI",
                       "Agentic AI",
                       "Responsive Web Design",
-                      
+                      "Agile",
                     ]}
                     initialDuplicates={2}
                   />
