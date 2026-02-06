@@ -20,18 +20,16 @@ interface ParticlesProps {
 const defaultColors: string[] = ['#ffffff', '#ffffff', '#ffffff'];
 
 const hexToRgb = (hex: string): [number, number, number] => {
-    hex = hex.replace(/^#/, '');
-    if (hex.length === 3) {
-        hex = hex
-            .split('')
-            .map(c => c + c)
-            .join('');
-    }
-    const int = parseInt(hex, 16);
-    const r = ((int >> 16) & 255) / 255;
-    const g = ((int >> 8) & 255) / 255;
-    const b = (int & 255) / 255;
-    return [r, g, b];
+    const cleanHex = hex.replace(/^#/, '');
+    const standardHex = cleanHex.length === 3
+        ? cleanHex.split('').map(c => c + c).join('')
+        : cleanHex;
+    const int = parseInt(standardHex, 16);
+    return [
+        ((int >> 16) & 255) / 255,
+        ((int >> 8) & 255) / 255,
+        (int & 255) / 255
+    ];
 };
 
 const vertex = /* glsl */ `
@@ -64,21 +62,13 @@ const vertex = /* glsl */ `
     mPos.z += sin(t * random.w + 6.28 * random.y) * mix(0.1, 1.5, random.z);
     
     vec4 mvPos = viewMatrix * mPos;
-
-    if (uSizeRandomness == 0.0) {
-      gl_PointSize = uBaseSize;
-    } else {
-      gl_PointSize = (uBaseSize * (1.0 + uSizeRandomness * (random.x - 0.5))) / length(mvPos.xyz);
-    }
-    
-    gl_Position = projectionMatrix * mvPos;
+    gl_PointSize = (uBaseSize * (1.0 + uSizeRandomness * (random.x - 0.5))) / length(mvPos.xyz);
     gl_Position = projectionMatrix * mvPos;
   }
 `;
 
 const fragment = /* glsl */ `
   precision highp float;
-  
   uniform float uTime;
   uniform float uAlphaParticles;
   varying vec4 vRandom;
@@ -89,13 +79,11 @@ const fragment = /* glsl */ `
     float d = length(uv - vec2(0.5));
     
     if(uAlphaParticles < 0.5) {
-      if(d > 0.5) {
-        discard;
-      }
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), 1.0);
+      if(d > 0.4) discard;
+      gl_FragColor = vec4(vColor + 0.1 * sin(uv.yxx + uTime + vRandom.y * 6.28), 1.0);
     } else {
-      float circle = smoothstep(0.5, 0.4, d) * 0.8;
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
+      float circle = smoothstep(0.5, 0.2, d) * 0.5;
+      gl_FragColor = vec4(vColor + 0.1 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
     }
   }
 `;
@@ -104,7 +92,7 @@ const Particles: React.FC<ParticlesProps> = ({
     particleCount = 200,
     particleSpread = 10,
     speed = 0.1,
-    particleColors,
+    particleColors = defaultColors,
     moveParticlesOnHover = false,
     particleHoverFactor = 1,
     alphaParticles = false,
@@ -112,11 +100,27 @@ const Particles: React.FC<ParticlesProps> = ({
     sizeRandomness = 1,
     cameraDistance = 20,
     disableRotation = false,
-    pixelRatio = 1,
+    pixelRatio = window.devicePixelRatio || 1,
     className
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+    const mouseRef = useRef({ x: 0, y: 0 });
+    const programRef = useRef<Program | null>(null);
+    const geometryRef = useRef<Geometry | null>(null);
+
+    useEffect(() => {
+        const colorAttr = geometryRef.current?.attributes?.color;
+        if (colorAttr?.data && particleColors.length > 0) {
+            const count = colorAttr.data.length / 3;
+            const newColors = new Float32Array(count * 3);
+            for (let i = 0; i < count; i++) {
+                const col = hexToRgb(particleColors[Math.floor(Math.random() * particleColors.length)]);
+                newColors.set(col, i * 3);
+            }
+            colorAttr.data = newColors;
+            colorAttr.needsUpdate = true;
+        }
+    }, [particleColors]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -131,43 +135,34 @@ const Particles: React.FC<ParticlesProps> = ({
         camera.position.set(0, 0, cameraDistance);
 
         const resize = () => {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
             renderer.setSize(width, height);
-            camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
+            camera.perspective({ aspect: width / height });
         };
-        window.addEventListener('resize', resize, false);
+        window.addEventListener('resize', resize);
         resize();
 
         const handleMouseMove = (e: MouseEvent) => {
-            const rect = container.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-            const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = -(e.clientY / window.innerHeight) * 2 + 1;
             mouseRef.current = { x, y };
         };
+        window.addEventListener('mousemove', handleMouseMove);
 
-        if (moveParticlesOnHover) {
-            container.addEventListener('mousemove', handleMouseMove);
-        }
-
-        const count = particleCount;
+        const count = window.innerWidth < 768 ? Math.min(particleCount, 100) : particleCount;
         const positions = new Float32Array(count * 3);
         const randoms = new Float32Array(count * 4);
         const colors = new Float32Array(count * 3);
-        const palette = particleColors && particleColors.length > 0 ? particleColors : defaultColors;
 
         for (let i = 0; i < count; i++) {
-            let x: number, y: number, z: number, len: number;
-            do {
-                x = Math.random() * 2 - 1;
-                y = Math.random() * 2 - 1;
-                z = Math.random() * 2 - 1;
-                len = x * x + y * y + z * z;
-            } while (len > 1 || len === 0);
+            const x = Math.random() * 2 - 1;
+            const y = Math.random() * 2 - 1;
+            const z = Math.random() * 2 - 1;
             const r = Math.cbrt(Math.random());
             positions.set([x * r, y * r, z * r], i * 3);
             randoms.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
-            const col = hexToRgb(palette[Math.floor(Math.random() * palette.length)]);
+            const col = hexToRgb(particleColors[Math.floor(Math.random() * particleColors.length)]);
             colors.set(col, i * 3);
         }
 
@@ -176,6 +171,7 @@ const Particles: React.FC<ParticlesProps> = ({
             random: { size: 4, data: randoms },
             color: { size: 3, data: colors }
         });
+        geometryRef.current = geometry;
 
         const program = new Program(gl, {
             vertex,
@@ -190,6 +186,7 @@ const Particles: React.FC<ParticlesProps> = ({
             transparent: true,
             depthTest: false
         });
+        programRef.current = program;
 
         const particles = new Mesh(gl, { mode: gl.POINTS, geometry, program });
 
@@ -206,17 +203,14 @@ const Particles: React.FC<ParticlesProps> = ({
             program.uniforms.uTime.value = elapsed * 0.001;
 
             if (moveParticlesOnHover) {
-                particles.position.x = -mouseRef.current.x * particleHoverFactor;
-                particles.position.y = -mouseRef.current.y * particleHoverFactor;
-            } else {
-                particles.position.x = 0;
-                particles.position.y = 0;
+                particles.position.x += (-mouseRef.current.x * particleHoverFactor - particles.position.x) * 0.1;
+                particles.position.y += (mouseRef.current.y * particleHoverFactor - particles.position.y) * 0.1;
             }
 
             if (!disableRotation) {
-                particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1;
-                particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15;
-                particles.rotation.z += 0.01 * speed;
+                particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.05;
+                particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.08;
+                particles.rotation.z += 0.005 * speed;
             }
 
             renderer.render({ scene: particles, camera });
@@ -226,15 +220,13 @@ const Particles: React.FC<ParticlesProps> = ({
 
         return () => {
             window.removeEventListener('resize', resize);
-            if (moveParticlesOnHover) {
-                container.removeEventListener('mousemove', handleMouseMove);
-            }
+            window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationFrameId);
             if (container.contains(gl.canvas)) {
                 container.removeChild(gl.canvas);
             }
+            gl.getExtension('WEBGL_lose_context')?.loseContext();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         particleCount,
         particleSpread,
@@ -249,7 +241,7 @@ const Particles: React.FC<ParticlesProps> = ({
         pixelRatio
     ]);
 
-    return <div ref={containerRef} className={`relative w-full h-full ${className}`} />;
+    return <div ref={containerRef} className={`fixed inset-0 -z-10 pointer-events-none ${className}`} />;
 };
 
 export default Particles;

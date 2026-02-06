@@ -100,6 +100,9 @@ const About = () => {
                       "Cursor",
                       "Git",
                       "Google Colab",
+                      "Linux",
+                      "Docker",
+                      "Aws",
                       
                     ]}
                     initialDuplicates={2}

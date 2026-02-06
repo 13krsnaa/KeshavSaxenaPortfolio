@@ -4,47 +4,42 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Project";
 import Contact from "./components/Contact";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { useTheme } from "./contexts/ThemeContext";
 import ClickSpark from "./components/ClickSpark";
 import Particles from "./components/background";
 
-
 function App() {
+  const { theme } = useTheme();
 
   return (
-    <ThemeProvider>
-      <ClickSpark
-        sparkColor="#ffffff"
-        sparkSize={16}
-        sparkRadius={31}
-        sparkCount={8}
-        duration={400}
-        easing="ease-out"
-        extraScale={1}
-      >
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <Particles
-            particleColors={["#ffffff"]}
-            particleCount={300}
-            particleSpread={10}
-            speed={0.1}
-            particleBaseSize={100}
-            moveParticlesOnHover={true}
-            alphaParticles={true}
-            disableRotation={false}
-            pixelRatio={5}
-          />
-        </div>
-        <div className="min-h-screen">
-          <Navigation />
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-        </div>
-      </ClickSpark>
-    </ThemeProvider>
+    <ClickSpark
+      sparkColor={theme === "dark" ? "#ffffff" : "#000000"}
+      sparkSize={16}
+      sparkRadius={31}
+      sparkCount={8}
+      duration={400}
+      easing="ease-out"
+      extraScale={1}
+    >
+      <Particles
+        particleColors={theme === "dark" ? ["#ffffff"] : ["#000000"]}
+        particleCount={1000}
+        particleSpread={40}
+        speed={0.5}
+        particleBaseSize={700}
+        moveParticlesOnHover={true}
+        alphaParticles={true}
+        disableRotation={false}
+      />
+      <div className="min-h-screen relative z-10">
+        <Navigation />
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Contact />
+      </div>
+    </ClickSpark>
   )
 }
 

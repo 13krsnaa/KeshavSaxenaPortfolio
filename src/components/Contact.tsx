@@ -27,13 +27,13 @@ const Contact = () => {
               </div>
               <div>
                 <div className="text-sm text-muted-foreground">Email</div>
-                <div className="font-medium">hanumantjain939@gmail.com</div>
+                <div className="font-medium">saxenakrishna9140@gmail.com</div>
               </div>
             </a>
 
             <div className="flex gap-4 pt-4">
               <a
-                href="https://github.com/hanumantjain"
+                href="https://github.com/13krsnaa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
@@ -41,7 +41,7 @@ const Contact = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/in/hanumant-jain"
+                href="https://linkedin.com/in/13krsna"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
@@ -54,7 +54,7 @@ const Contact = () => {
 
         <div className="mt-24 pt-8 border-t border-border">
           <div className="flex justify-end text-sm text-muted-foreground">
-            <div className="font-mono">© 2025 Hanumant Jain. All rights reserved.</div>
+            <div className="font-mono">© 2026 Keshav Saxena. All rights reserved.</div>
           </div>
         </div>
       </div>
