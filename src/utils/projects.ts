@@ -16,7 +16,7 @@ interface RawProject {
 }
 
 const rawProjects: RawProject[] = [
-  {
+ /* {
     id: "0",
     name: "Inspire Health Care",
     description:
@@ -68,50 +68,50 @@ const rawProjects: RawProject[] = [
     tools: "ReactJS, TypeScript, TailwindCSS",
     website: "https://tic-tac-toe-hanumant.netlify.app",
     github: "https://github.com/hanumantjain/tic-tac-toe",
+  },*/
+  {
+    id: "0",
+    name: "GitHub Activity Analyzer",
+    description: "A sleek, professional, and responsive dashboard to analyze GitHub user activity using the official GitHub REST API. Built with React for modern, component-based architecture..",
+    tools: "HTML, CSS, JS, React, GitHub restAPI's",
+    website: "",
+    github: "https://github.com/13krsnaa/GitHub-Activity-Analyzer.git",
   },
   {
-    id: "6",
-    name: "WallCraft Architect",
-    description: "High-impact architect portfolio featuring modular layouts, project highlights, and immersive imagery.",
-    tools: "React, TailwindCSS",
-    website: "https://wallcreaftarchitects.netlify.app",
-    github: "https://github.com/hanumantjain/wallcraft-architect",
-  },
-  {
-    id: "7",
-    name: "Green Shoes",
+    id: "1",
+    name: "Portfolio",
     description:
-      "Responsive e-commerce sneaker storefront with advanced filtering, authentication, and Redux-powered cart experience.",
-    tools: "React.js, Node.js, TypeScript, Redux, PostgreSQL",
-    website: "https://green-shoes.vercel.app",
-    github: "https://github.com/hanumantjain/green-shoes",
+      " A production-grade, immersive digital experience showcasing full-stack engineering excellence. This portfolio features a cinematic dark aesthetic, fluid micro-animations, and a highly responsive architecture",
+    tools: "React.js, Node.js, TypeScript, Redux, Framer Motion, Tailwind CSS, ",
+    website: "",
+    github: "https://github.com/13krsnaa/KeshavSaxenaPortfolio.git",
   },
   {
-    id: "8",
-    name: "MedCompass",
+    id: "2",
+    name: "TeamForge",
     description:
-      "Automated post-discharge follow-up system delivering personalised voice outreach and reducing manual healthcare workloads.",
-    tools: "Twilio Voice API, MongoDB Atlas, React, REST APIs, Git",
-    website: "https://devpost.com/software/medcompass",
-    github: "https://github.com/hanumantjain/medcompass",
+      "A secure, full-stack project management system built with the MERN stack, featuring role-based access control, JWT authentication, and document management with Cloudinary.",
+    tools: "Node, Express, JWT , bcrypts, CORS, Cloudinary, react",
+    website: "",
+    github: "https://github.com/13krsnaa/TeamForge.git",
   },
   {
-    id: "9",
-    name: "KatanBot",
+    id: "3",
+    name: "AsyncFlow",
     description:
-      "Agentic AI assistant for the Katana DeFi network with MPC-secured wallet access, live on-chain insights, and NFT discovery.",
-    tools: "Katana DeFi, MCP, OpenAI API, OpenSea API, Dynamic Authentication, Python, React, TailwindCSS",
-    website: "https://katabot.netlify.app/",
-    github: "https://github.com/hanumantjain/katanbot",
+      "AsyncFlow is a production-grade, distributed background job processing platform. It handles high-latency tasks asynchronously using a non-blocking API, BullMQ/Redis queue, and horizontally scalable workers.",
+    tools: "React, Vite , Socket.io, Node.js, Express, PostgreSQL, Prisma ORM, Redis , Docker, Typescript",
+    website: "",
+    github: "https://github.com/13krsnaa/AsyncFlow.git",
   },
   {
-    id: "10",
-    name: "GalleryAI",
+    id: "5",
+    name: "Learning Progress Tracker",
     description:
-      "AI-powered image gallery with image generation, image editing, and image search capabilities.",
-    tools: "AWS, S3, CloudFront, API Gateway, Amazon RDS, Jenkins,Lambda, React, TypeScript, TailwindCSS",
-    website: "https://galleryai.hanumantjain.tech/",
-    github: "https://github.com/hanumantjain/social-hub",
+      "A comprehensive, full-stack solution to track your learning journey, visualize progress, and stay motivated. Built with the MERN stack and modern DevOps practices",
+    tools: "Node.js, Express.js, MongoDB, API Gateway, Redis, React, TypeScript, TailwindCSS",
+    website: "https://learning-progress-tracker-nu.vercel.app/",
+    github: "https://github.com/13krsnaa/Learning-Progress-Tracker.git",
   },
 ];
 
