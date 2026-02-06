@@ -6,6 +6,8 @@ import Projects from "./components/Project";
 import Contact from "./components/Contact";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ClickSpark from "./components/ClickSpark";
+import Particles from "./components/background";
+
 
 function App() {
 
@@ -20,6 +22,19 @@ function App() {
         easing="ease-out"
         extraScale={1}
       >
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <Particles
+            particleColors={["#ffffff"]}
+            particleCount={300}
+            particleSpread={10}
+            speed={0.1}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={true}
+            disableRotation={false}
+            pixelRatio={5}
+          />
+        </div>
         <div className="min-h-screen">
           <Navigation />
           <Hero />
