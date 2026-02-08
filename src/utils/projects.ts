@@ -113,6 +113,19 @@ const rawProjects: RawProject[] = [
     website: "https://learning-progress-tracker-nu.vercel.app/",
     github: "https://github.com/13krsnaa/Learning-Progress-Tracker.git",
   },
+  /*{
+    id: "6",
+    name: "NearBuy -Hyperlocal Order-Ahead & Pickup Platform",
+    description:  `NearBuy is a hyperlocal order-ahead & pickup platform that lets users prepay for products from nearby popular stores and skip long queues by collecting their ready-packed orders anytime. Built with the MERN stack, it features role-based authentication, product & cart system, Razorpay payments, and QR/OTP pickup verification, delivering a real-world full-stack solution focused on speed, simplicity, and local convenience.
+`,
+           
+
+
+  
+    tools: "Node.js, Express.js, MongoDB, API Gateway, Redis, React, TypeScript, TailwindCSS",
+    website: "https://learning-progress-tracker-nu.vercel.app/",
+    github: "https://github.com/13krsnaa/Learning-Progress-Tracker.git",
+  },*/
 ];
 
 const splitTools = (tools: string): string[] =>
