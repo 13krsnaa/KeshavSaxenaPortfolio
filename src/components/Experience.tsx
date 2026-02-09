@@ -38,14 +38,14 @@ const Experience = () => {
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                   <div>
                     <h3 className="text-xl font-semibold">{exp.role}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
+                    <p className="text-glow">{exp.company}</p>
                   </div>
                   <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
                 </div>
 
-                <ul className="space-y-2 text-muted-foreground text-sm list-disc pl-5">
+                <ul className="space-y-2 text-sm list-disc pl-5">
                   {exp.description.map((item, itemIndex) => (
-                    <li key={itemIndex}>{item}</li>
+                    <li key={itemIndex} className="text-glow">{item}</li>
                   ))}
                 </ul>
               </div>

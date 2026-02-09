@@ -12,7 +12,7 @@ const Contact = () => {
 
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-glow mb-8">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
             Feel free to reach out if you want to connect!
           </p>
@@ -26,7 +26,7 @@ const Contact = () => {
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-sm text-muted-foreground">Email</div>
+                <div className="text-sm text-glow">Email</div>
                 <div className="font-medium">saxenakrishna9140@gmail.com</div>
               </div>
             </a>

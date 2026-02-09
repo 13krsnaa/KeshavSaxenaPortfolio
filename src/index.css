@@ -167,4 +167,14 @@
   .group:hover .group-hover\:text-accent-foreground {
     color: hsl(var(--accent-foreground));
   }
+
+  .text-glow {
+    color: hsl(var(--muted-foreground));
+    @apply transition-all duration-300;
+  }
+
+  .text-glow:hover {
+    color: hsl(var(--foreground));
+    text-shadow: 0 0 8px hsl(var(--foreground) / 0.3);
+  }
 }
