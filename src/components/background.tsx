@@ -15,6 +15,7 @@ interface ParticlesProps {
   disableRotation?: boolean;
   pixelRatio?: number;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const defaultColors: string[] = ['#ffffff', '#ffffff', '#ffffff'];
@@ -72,7 +73,6 @@ const vertex = /* glsl */ `
     }
     
     gl_Position = projectionMatrix * mvPos;
-    gl_Position = projectionMatrix * mvPos;
   }
 `;
 
@@ -113,13 +113,15 @@ const Particles: React.FC<ParticlesProps> = ({
   cameraDistance = 20,
   disableRotation = false,
   pixelRatio = 1,
-  className
+  className = "",
+  children
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
-    const container = containerRef.current;
+    const container = canvasContainerRef.current;
     if (!container) return;
 
     const renderer = new Renderer({ dpr: pixelRatio, depth: false, alpha: true });
@@ -147,7 +149,7 @@ const Particles: React.FC<ParticlesProps> = ({
     };
 
     if (moveParticlesOnHover) {
-      container.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove);
     }
 
     const count = particleCount;
@@ -227,7 +229,7 @@ const Particles: React.FC<ParticlesProps> = ({
     return () => {
       window.removeEventListener('resize', resize);
       if (moveParticlesOnHover) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mousemove', handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
@@ -249,7 +251,17 @@ const Particles: React.FC<ParticlesProps> = ({
     pixelRatio
   ]);
 
-  return <div ref={containerRef} className={`relative w-full h-full ${className}`} />;
+  return (
+    <div ref={containerRef} className={`relative min-h-screen w-full ${className}`}>
+      <div
+        ref={canvasContainerRef}
+        className="fixed inset-0 -z-10 pointer-events-none"
+      />
+      <div className="relative z-0">
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default Particles;
