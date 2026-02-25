@@ -2,6 +2,7 @@ import { TypewriterText } from "./ui/typewriter-text";
 
 const Hero = () => {
   return (
+      
     <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="font-mono text-xs text-glow mb-6">

@@ -21,7 +21,7 @@ function AppContent() {
       easing="ease-out"
       extraScale={1}
     >
-      <Background>
+      <Background particleColors={theme === "dark" ? ["#ffffff"] : ["#000000"]}>
         <div className="min-h-screen">
           <Navigation />
           <Hero />
