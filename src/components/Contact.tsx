@@ -19,7 +19,7 @@ const Contact = () => {
 
           <div className="space-y-4">
             <a
-              href="mailto:hanumantjain939@gmail.com"
+              href="mailto:saxenakrishna9140@gmail.com"
               className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors group"
             >
               <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-colors">

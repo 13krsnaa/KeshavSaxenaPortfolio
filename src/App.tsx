@@ -4,7 +4,7 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Project";
 import Contact from "./components/Contact";
-import Background from "./components/background";
+import Background from "./components/Background";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import ClickSpark from "./components/ClickSpark";
 

@@ -64,64 +64,83 @@ const About = () => {
 
                     "JavaScript (ES6+)",
                     "TypeScript",
-                    "MySQL",
+                    "SQL",
                     "HTML5",
                     "CSS3",
-                    "MongoDB",
-                    "PostgreSQL",
+                    "C++",
+
                   ]}
                   initialDuplicates={0}
                 />
               </div>
 
               <div>
-                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Frameworks & Libraries</div>
+                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Backend & APIs</div>
                 <Marquee
                   items={[
+                    "Node.js",
+                    "Express",
+                    "REST APIs",
+                    "JWT",
+                    "Oauth",
+                    "Socket.io",
+
+                  ]}
+                  initialDuplicates={2}
+                />
+              </div>
+
+
+
+              <div>
+                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Databases</div>
+                <Marquee
+                  items={[
+                      "MongoDB",
+                      "PostgreSQL",
+                      "MySQL",
+                      "Prisma",
+                      "Mongoose",
+                      "Mongosh",
+
+                  ]}
+                  initialDuplicates={2}
+                />
+              </div>
+
+              <div>
+                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Frontend</div>
+                <Marquee
+                  items={[
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
                     "React.js",
                     "Next.js",
-                    "Node.js",
-                    "Express.js",
-                    "RestAPI",
-                    "Redux",
                     "Tailwind CSS",
+                    "Redux",
                   ]}
-                  initialDuplicates={2}
-                />
-              </div>
-
-
-
-              <div>
-                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Software & Tools</div>
-                <Marquee
-                  items={[
-                    "Visual Studio",
-                    "Cursor",
-                    "Git",
-                    "Google Colab",
-                    "Linux",
-                    "Docker",
-                    "Aws",
-
-                  ]}
-                  initialDuplicates={2}
+                  initialDuplicates={0}
                 />
               </div>
 
               <div>
-                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[10px] md:text-xs whitespace-nowrap text-glow">Expertise</div>
+                <div className="code-tag mb-1.5 sm:mb-2 w-fit text-[9px] sm:text-[9px] md:text-xs whitespace-nowrap text-glow">DevOps & Tools</div>
                 <Marquee
                   items={[
-                    "REST APIs",
-                    "Generative AI",
-                    "Agentic AI",
-                    "Responsive Web Design",
-                    "Agile",
+                     "Docker",
+                     "AWS",
+                     "Github actions",
+                     "Linux",
+                     "Git",
+                     "VS Code",
+                     "Postman",
                   ]}
-                  initialDuplicates={2}
+                  initialDuplicates={0}
                 />
               </div>
+
+
             </div>
           </div>
         </div>
