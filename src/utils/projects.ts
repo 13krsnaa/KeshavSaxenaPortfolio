@@ -49,7 +49,7 @@ const rawProjects: RawProject[] = [
     id: "4",
     name: "AsyncFlow",
     description:
-      "AsyncFlow is a production-grade, distributed background job processing platform. It handles high-latency tasks asynchronously using a non-blocking API, BullMQ/Redis queue, and horizontally scalable workers.",
+      "AsyncFlow is a production-grade, distributed background job processing platform. It handles high-latency tasks asynchronously using a non-blocking API, BullMQ/Redis queue, and horizontally scalable workers using Docker.",
     tools: "React, Vite , Socket.io, Node.js, Express, PostgreSQL, Prisma ORM, Redis , Docker, Typescript",
     website: "",
     github: "https://github.com/13krsnaa/AsyncFlow.git",
